@@ -51,3 +51,27 @@ col1.metric("Total Students", total_students)
 col2.metric("Conversion Rate (%)", f"{conversion_rate:.2f}")
 col3.metric("Avg Final Price", f"₹{avg_price:,.0f}")
 col4.metric("Total Revenue", f"₹{total_revenue:,.0f}")
+
+# -----------------------------
+# Basic Analysis
+# -----------------------------
+st.subheader(" Descriptive Statistics")
+st.write(df.describe())
+
+# -----------------------------
+# Business Insights
+# -----------------------------
+st.subheader("💡 Key Insights")
+
+# Top revenue student
+top_student = df.loc[df["Revenue"].idxmax()] #idxmax() - Max value - Index
+st.write(f" Highest Revenue Student ID: {top_student['Student_ID']} → ₹{top_student['Revenue']:,.0f}")
+
+# Conversion by Program
+conversion_by_program = df.groupby("Program_Type")["Converted"].mean() * 100
+st.write(" Conversion Rate by Program:")
+st.write(conversion_by_program)
+
+# Avg Discount
+avg_discount = df["Discount_%"].mean()
+st.write(f" Average Discount Given: {avg_discount:.2f}%")
