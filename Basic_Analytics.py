@@ -61,7 +61,7 @@ st.write(df.describe())
 # -----------------------------
 # Business Insights
 # -----------------------------
-st.subheader("💡 Key Insights")
+st.subheader("Key Insights")
 
 # Top revenue student
 top_student = df.loc[df["Revenue"].idxmax()] #idxmax() - Max value - Index
