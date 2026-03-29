@@ -12,7 +12,7 @@ st.set_page_config(page_title="PragyanAI Student Program Pricing Analytics Dashb
 # -----------------------------
 st.title("PragyanAI Student Program Pricing & Scholarship Analytics Dashboard")
 
-st.write("Analyze pricing, discounts, and student conversion behavior.")
+st.write("Analyze pricing, discounts, and student conversion behavior.") # Print
 
 # -----------------------------
 # Load Data
@@ -23,3 +23,14 @@ def load_data():
     return df
 
 df = load_data()
+
+# -----------------------------
+# Show Data
+# -----------------------------
+st.subheader("Dataset Preview")
+st.dataframe(df.head()) # Display the Sample View of Data
+
+st.write("Basic Info about Data")
+buffer = io.StringIO()
+df.info(buf=buffer)
+st.text(buffer.getvalue()) # Print Text Data
