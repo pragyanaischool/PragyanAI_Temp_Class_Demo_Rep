@@ -34,3 +34,20 @@ st.write("Basic Info about Data")
 buffer = io.StringIO()
 df.info(buf=buffer)
 st.text(buffer.getvalue()) # Print Text Data
+
+# -----------------------------
+# KPIs
+# -----------------------------
+st.subheader(" Key Metrics")
+
+col1, col2, col3, col4 = st.columns(4)
+
+total_students = len(df)
+conversion_rate = df["Converted"].mean() * 100
+avg_price = df["Final_Price"].mean()
+total_revenue = df["Revenue"].sum()
+
+col1.metric("Total Students", total_students)
+col2.metric("Conversion Rate (%)", f"{conversion_rate:.2f}")
+col3.metric("Avg Final Price", f"₹{avg_price:,.0f}")
+col4.metric("Total Revenue", f"₹{total_revenue:,.0f}")
